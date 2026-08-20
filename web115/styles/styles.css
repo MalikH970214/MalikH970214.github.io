@@ -43,3 +43,62 @@ footer {
     margin-top: 20px;
     padding: 20px;
 }
+
+h3 {
+    font-family: Verdana, Geneva, sans-serif;
+    margin-top: 25px;
+}
+
+.brand-name {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.tagline {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.background-swatch,
+.content-swatch,
+.text-swatch,
+.accent-swatch {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.background-swatch {
+    background-color: #f2f0e9;
+    color: #292929;
+}
+
+.content-swatch {
+    background-color: #e4e1d8;
+    color: #292929;
+}
+
+.text-swatch {
+    background-color: #292929;
+    color: #f2f0e9;
+}
+
+.accent-swatch {
+    background-color: #345995;
+    color: #f2f0e9;
+}
+
+.heading-font-example {
+    display: block;
+    margin-top: 5px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+}
+
+.body-font-example {
+    display: block;
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
