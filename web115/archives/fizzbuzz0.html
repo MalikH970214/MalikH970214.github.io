@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Malik Harris's Mighty Hawk — WEB115 — FizzBuzz 0</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Malik Harris's Mighty Hawk — WEB115</h1>
+
+        <p class="brand-name">M.H. Web Design Co.</p>
+
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="introduction.html">Introduction</a>
+            <a href="contract.html">Contract</a>
+            <a href="brand.html">Brand</a>
+            <a href="fizzbuzz0.html">FizzBuzz 0</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>FizzBuzz 0</h2>
+
+        <h3 id="greeting">Welcome to Mighty Hawk!</h3>
+
+        <form id="name-form">
+            <label for="first_name">First Name:</label>
+            <input
+                type="text"
+                id="first_name"
+                placeholder="Enter your first name">
+
+            <br><br>
+
+            <label for="middle_initial">Middle Initial:</label>
+            <input
+                type="text"
+                id="middle_initial"
+                placeholder="M"
+                maxlength="1">
+
+            <br><br>
+
+            <label for="last_name">Last Name:</label>
+            <input
+                type="text"
+                id="last_name"
+                placeholder="Enter your last name">
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="output"></div>
+
+        
+    </main>
+
+    <footer>
+        <nav>
+            <a href="https://github.com/MalikH970214" target="_blank">GitHub</a>
+            <a href="https://www.freecodecamp.org/Malik_H97" target="_blank">freeCodeCamp</a>
+            <a href="https://www.codecademy.com/profiles/bit5872199153" target="_blank">Codecademy</a>
+            <a href="https://jsfiddle.net/u/Malik_H97/fiddles/" target="_blank">JSFiddle</a>
+            <a href="https://www.linkedin.com/learning/?u=76141674" target="_blank">LinkedIn Learning</a>
+        </nav>
+
+        <p>
+            <a href="https://validator.w3.org/check?uri=referer" target="_blank">Validate HTML</a>
+            |
+            <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank">Validate CSS</a>
+        </p>
+
+        <p>Page built by M.H. Web Design Co.</p>
+
+        <script>
+            // Get the form from the webpage
+            const nameForm = document.getElementById("name-form");
+
+            // Run the code when the form is submitted
+            nameForm.addEventListener("submit", function(event) {
+
+                // Stop the page from refreshing
+                event.preventDefault();
+
+                // Get the user's name
+                let firstName = document.getElementById("first_name").value.trim();
+                let middleInitial = document.getElementById("middle_initial").value.trim();
+                let lastName = document.getElementById("last_name").value.trim();
+
+                // Check if the user entered a first name
+                if (firstName === "") {
+                    firstName = "Guest";
+                }
+
+                // Start building the full name
+                let fullName = firstName;
+
+                // Add the middle initial if one was entered
+                if (middleInitial !== "") {
+                    fullName += " " + middleInitial + ".";
+                }
+
+                // Add the last name if one was entered
+                if (lastName !== "") {
+                    fullName += " " + lastName;
+                }
+
+                // Change the greeting
+                document.getElementById("greeting").textContent =
+                    "Welcome to Mighty Hawk, " + fullName + "!";
+
+                // Ask the user how high they want to count
+                let limit = prompt(
+                    "How high do you want to count, " + firstName + "?"
+                );
+
+                // Change the answer into a number
+                limit = Number(limit);
+
+                // Check if the number is valid
+                if (isNaN(limit) || limit <= 0) {
+                    alert("Invalid number. The program will count to 125 instead.");
+                    limit = 125;
+                }
+
+                // Get the output area
+                const output = document.getElementById("output");
+
+                // Clear previous output
+                output.innerHTML = "";
+
+                // Create a list
+                const list = document.createElement("ul");
+
+                // Loop from 1 to the number the user entered
+                for (let i = 1; i <= limit; i++) {
+
+                    let numberType;
+
+                    // Check if the number is even or odd
+                    if (i % 2 === 0) {
+                        numberType = "even";
+                    } else {
+                        numberType = "odd";
+                    }
+
+                    // Create a new list item
+                    const listItem = document.createElement("li");
+
+                    // Add the Mighty Hawk message
+                    listItem.textContent =
+                        i + ") Mighty Hawk - the number is " + numberType;
+
+                    // Add the item to the list
+                    list.appendChild(listItem);
+                }
+
+                // Display the list
+                output.appendChild(list);
+            });
+        </script>
+
+        <script src="https://lint.page/kit/880bd5.js" crossorigin="anonymous"></script>
+    </footer>
+</body>
+</html>
+
