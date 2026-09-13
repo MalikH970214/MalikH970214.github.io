@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +58,7 @@
         function checkDivision(number, divisor) {
             return number % divisor === 0;
         }
-      
+
         // Get the form from the page
         const nameForm = document.getElementById("name-form");
 
@@ -120,17 +121,19 @@
                 const listItem = document.createElement("li");
 
                 // Check if number is divisible by both 3 and 5
-                if (i % firstDivisor === 0 && i % secondDivisor === 0) {
+                if (checkDivision(i, firstDivisor) &&
+                    checkDivision(i, secondDivisor)) {
+
                     listItem.textContent = firstWord + " " + secondWord;
                 }
 
                 // Check if number is divisible by 3
-                else if (i % firstDivisor === 0) {
+                else if (checkDivision(i, firstDivisor)) {
                     listItem.textContent = firstWord;
                 }
 
                 // Check if number is divisible by 5
-                else if (i % secondDivisor === 0) {
+                else if (checkDivision(i, secondDivisor)) {
                     listItem.textContent = secondWord;
                 }
 
@@ -151,3 +154,4 @@
     <script src="scripts/HTMLInclude.js"></script>
 </body>
 </html>
+```
