@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Malik Harris's Mighty Hawk — WEB115 — FizzBuzz 3</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <h2>FizzBuzz 3</h2>
+
+        <h3 id="greeting">Welcome to Mighty Hawk!</h3>
+
+        <form id="name-form">
+            <label for="first_name">First Name:</label>
+            <input
+                type="text"
+                id="first_name"
+                placeholder="Enter your first name">
+
+            <br><br>
+
+            <label for="middle_initial">Middle Initial:</label>
+            <input
+                type="text"
+                id="middle_initial"
+                placeholder="M"
+                maxlength="1">
+
+            <br><br>
+
+            <label for="last_name">Last Name:</label>
+            <input
+                type="text"
+                id="last_name"
+                placeholder="Enter your last name">
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="output"></div>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script>
+        // Check if one number is evenly divisible by another
+        function checkDivision(number, divisor) {
+            return number % divisor === 0;
+        }
+
+        // Get the form from the page
+        const nameForm = document.getElementById("name-form");
+
+        // Run when the user submits the form
+        nameForm.addEventListener("submit", function(event) {
+
+            // Stop the page from refreshing
+            event.preventDefault();
+
+            // Get the user's name
+            let firstName = document.getElementById("first_name").value.trim();
+            let middleInitial = document.getElementById("middle_initial").value.trim();
+            let lastName = document.getElementById("last_name").value.trim();
+
+            // Use Guest if no first name was entered
+            if (firstName === "") {
+                firstName = "Guest";
+            }
+
+            // Build the full name
+            let fullName = firstName;
+
+            // Add middle initial if entered
+            if (middleInitial !== "") {
+                fullName += " " + middleInitial + ".";
+            }
+
+            // Add last name if entered
+            if (lastName !== "") {
+                fullName += " " + lastName;
+            }
+
+            // Change the greeting
+            document.getElementById("greeting").textContent =
+                "Welcome to Mighty Hawk, " + fullName + "!";
+
+            // Values used for FizzBuzz
+            const maxNumber = 140;
+
+            // Divisors and their corresponding words
+            const divisors = [3, 5, 7];
+            const words = ["Screech!", "Dive!", "BANG!"];
+
+            // Word used when no divisor matches
+            const normalWord = "Soar!";
+
+            // Get the output area
+            const output = document.getElementById("output");
+
+            // Clear old results
+            output.innerHTML = "";
+
+            // Create a numbered list
+            const list = document.createElement("ol");
+
+            // Count from 1 to 140
+            for (let i = 1; i <= maxNumber; i++) {
+
+                // Store all matching words for this number
+                let result = [];
+
+                // Check every divisor
+                for (let j = 0; j < divisors.length; j++) {
+
+                    if (checkDivision(i, divisors[j])) {
+                        result.push(words[j]);
+                    }
+                }
+
+                // If nothing matched, use Soar!
+                if (result.length === 0) {
+                    result.push(normalWord);
+                }
+
+                // Create a list item
+                const listItem = document.createElement("li");
+
+                // Display all matching words
+                listItem.textContent = result.join(" ");
+
+                // Add item to the numbered list
+                list.appendChild(listItem);
+            }
+
+            // Show the list
+            output.appendChild(list);
+        });
+    </script>
+
+    <script src="scripts/HTMLInclude.js"></script>
+</body>
+</html>
