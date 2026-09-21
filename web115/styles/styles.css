@@ -102,3 +102,10 @@ h3 {
     margin-top: 5px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.site-logo {
+    float: left;
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+}
