@@ -18,7 +18,16 @@
 
         <h3 id="greeting">Welcome to Mighty Hawk!</h3>
 
+        <p>
+            Create your own FizzBuzz challenge! Enter three numbers,
+            choose a word for each number, and select how many numbers
+            you want to generate.
+        </p>
+
         <form id="name-form">
+
+            <h3>Your Information</h3>
+
             <label for="first_name">First Name:</label>
             <input
                 type="text"
@@ -42,9 +51,74 @@
                 id="last_name"
                 placeholder="Enter your last name">
 
+            <h3>FizzBuzz Settings</h3>
+
+            <p>
+                Enter a number and one word for each rule.
+                If a number is divisible by more than one rule,
+                all matching words will be displayed.
+                Numbers that do not match any rule will remain blank.
+            </p>
+
+            <label for="divisor1">Number 1:</label>
+            <input
+                type="number"
+                id="divisor1"
+                value="3"
+                min="1">
+
+            <label for="word1">Word 1:</label>
+            <input
+                type="text"
+                id="word1"
+                value="Exploration"
+                placeholder="One word only">
+
             <br><br>
 
-            <button type="submit">Submit</button>
+            <label for="divisor2">Number 2:</label>
+            <input
+                type="number"
+                id="divisor2"
+                value="5"
+                min="1">
+
+            <label for="word2">Word 2:</label>
+            <input
+                type="text"
+                id="word2"
+                value="Level-Up"
+                placeholder="One word only">
+
+            <br><br>
+
+            <label for="divisor3">Number 3:</label>
+            <input
+                type="number"
+                id="divisor3"
+                value="7"
+                min="1">
+
+            <label for="word3">Word 3:</label>
+            <input
+                type="text"
+                id="word3"
+                value="BANG!"
+                placeholder="One word only">
+
+            <br><br>
+
+            <label for="total">Total:</label>
+            <input
+                type="number"
+                id="total"
+                value="125"
+                min="1">
+
+            <br><br>
+
+            <button type="submit">Generate FizzBuzz</button>
+
         </form>
 
         <div id="output"></div>
@@ -94,15 +168,22 @@
             document.getElementById("greeting").textContent =
                 "Welcome to Mighty Hawk, " + fullName + "!";
 
-            // Values used for FizzBuzz
-            const maxNumber = 140;
+            // Get the three divisors
+            const divisor1 = Number(document.getElementById("divisor1").value);
+            const divisor2 = Number(document.getElementById("divisor2").value);
+            const divisor3 = Number(document.getElementById("divisor3").value);
 
-            // Divisors and their corresponding words
-            const divisors = [3, 5, 7];
-            const words = ["Screech!", "Dive!", "BANG!"];
+            // Get the three words
+            const word1 = document.getElementById("word1").value.trim();
+            const word2 = document.getElementById("word2").value.trim();
+            const word3 = document.getElementById("word3").value.trim();
 
-            // Word used when no divisor matches
-            const normalWord = "Soar!";
+            // Get the total
+            const maxNumber = Number(document.getElementById("total").value);
+
+            // Store divisors and words together
+            const divisors = [divisor1, divisor2, divisor3];
+            const words = [word1, word2, word3];
 
             // Get the output area
             const output = document.getElementById("output");
@@ -113,7 +194,7 @@
             // Create a numbered list
             const list = document.createElement("ol");
 
-            // Count from 1 to 140
+            // Count from 1 to the selected total
             for (let i = 1; i <= maxNumber; i++) {
 
                 // Store all matching words for this number
@@ -127,22 +208,18 @@
                     }
                 }
 
-                // If nothing matched, use Soar!
-                if (result.length === 0) {
-                    result.push(normalWord);
-                }
-
                 // Create a list item
                 const listItem = document.createElement("li");
 
-                // Display all matching words
-                listItem.textContent = result.join(" ");
+                // Display matching words.
+                // If nothing matches, the result stays blank.
+                listItem.textContent = result.join(", ");
 
-                // Add item to the numbered list
+                // Add the list item
                 list.appendChild(listItem);
             }
 
-            // Show the list
+            // Show the completed list
             output.appendChild(list);
         });
     </script>
@@ -150,3 +227,4 @@
     <script src="scripts/HTMLInclude.js"></script>
 </body>
 </html>
+
